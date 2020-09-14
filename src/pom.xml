@@ -178,48 +178,4 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-<!-- 	<repositories> -->
-<!-- 		<repository> -->
-<!-- 			<id>nexus.inter-iot.eu-releases</id> -->
-<!-- 			<url>http://nexus.inter-iot.eu/repository/maven-releases/</url> -->
-<!-- 			<releases> -->
-<!-- 				<enabled>true</enabled> -->
-<!-- 			</releases> -->
-<!-- 			<snapshots> -->
-<!-- 				<enabled>false</enabled> -->
-<!-- 			</snapshots> -->
-<!-- 		</repository> -->
-<!-- 		<repository> -->
-<!-- 			<id>nexus.inter-iot.eu-snapshots</id> -->
-<!-- 			<url>http://nexus.inter-iot.eu/repository/maven-snapshots/</url> -->
-<!-- 			<releases> -->
-<!-- 				<enabled>false</enabled> -->
-<!-- 			</releases> -->
-<!-- 			<snapshots> -->
-<!-- 				<enabled>true</enabled> -->
-<!-- 			</snapshots> -->
-<!-- 		</repository> -->
-<!-- 	</repositories> -->
-<!-- 	<pluginRepositories> -->
-<!-- 		<pluginRepository> -->
-<!-- 			<id>nexus.inter-iot.eu-releases</id> -->
-<!-- 			<url>http://nexus.inter-iot.eu/repository/maven-releases/</url> -->
-<!-- 			<releases> -->
-<!-- 				<enabled>true</enabled> -->
-<!-- 			</releases> -->
-<!-- 			<snapshots> -->
-<!-- 				<enabled>false</enabled> -->
-<!-- 			</snapshots> -->
-<!-- 		</pluginRepository> -->
-<!-- 		<pluginRepository> -->
-<!-- 			<id>nexus.inter-iot.eu-snapshots</id> -->
-<!-- 			<url>http://nexus.inter-iot.eu/repository/maven-snapshots/</url> -->
-<!-- 			<releases> -->
-<!-- 				<enabled>false</enabled> -->
-<!-- 			</releases> -->
-<!-- 			<snapshots> -->
-<!-- 				<enabled>true</enabled> -->
-<!-- 			</snapshots> -->
-<!-- 		</pluginRepository> -->
-<!-- 	</pluginRepositories> -->
 </project>
