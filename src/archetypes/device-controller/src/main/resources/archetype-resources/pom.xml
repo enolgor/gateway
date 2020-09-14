@@ -151,8 +151,8 @@
 	</build>
 		<repositories>
 		<repository>
-			<id>nexus.inter-iot.eu-releases</id>
-			<url>http://nexus.inter-iot.eu/repository/maven-releases/</url>
+			<id>central</id>
+			<url>https://interiot.jfrog.io/artifactory/libs-release</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -161,8 +161,8 @@
 			</snapshots>
 		</repository>
 		<repository>
-			<id>nexus.inter-iot.eu-snapshots</id>
-			<url>http://nexus.inter-iot.eu/repository/maven-snapshots/</url>
+			<id>snapshots</id>
+			<url>https://interiot.jfrog.io/artifactory/libs-snapshot</url>
 			<releases>
 				<enabled>false</enabled>
 			</releases>
@@ -173,8 +173,8 @@
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
-			<id>nexus.inter-iot.eu-releases</id>
-			<url>http://nexus.inter-iot.eu/repository/maven-releases/</url>
+			<id>central</id>
+			<url>https://interiot.jfrog.io/artifactory/libs-release</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -183,8 +183,8 @@
 			</snapshots>
 		</pluginRepository>
 		<pluginRepository>
-			<id>nexus.inter-iot.eu-snapshots</id>
-			<url>http://nexus.inter-iot.eu/repository/maven-snapshots/</url>
+			<id>snapshots</id>
+			<url>https://interiot.jfrog.io/artifactory/libs-snapshot</url>
 			<releases>
 				<enabled>false</enabled>
 			</releases>
