@@ -16,6 +16,7 @@ jobs:
           java-version: 1.8
       - name: Get release tags
         run: |
+          echo "url = $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases"
           release_json=$(curl $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases)
           echo $release_json
           
