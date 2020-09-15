@@ -18,6 +18,7 @@ jobs:
         run: |
           echo "url = $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases"
           release_exists=$(curl -s https://api.github.com/repos/enolgor/gateway/releases | jq -r '.[].tag_name' | grep -c "0.6.2")
+	  echo "Release exists = $release_exists"
           if [ "$release_exists" -eq "0" ]; then; exit; else; exit 1; fi;          
   deploy:
     needs: check
