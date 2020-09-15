@@ -25,8 +25,27 @@ jobs:
           releases=$(curl -s https://api.github.com/repos/enolgor/gateway/releases | jq -r '.[].tag_name')
           release_not_exists=$(echo "$releases" | grep -q "${{ steps.getversion.outputs.version }}"; echo $?;)
           if [ "$release_not_exists" -eq "1" ]; then exit 0; else exit 1; fi
+      - name: Setup maven settings
+        run: |
+          cat <<EOT >> $HOME/.m2/settings.xml
+          <?xml version="1.0" encoding="UTF-8"?>
+          <settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <servers>
+            <server>
+              <username>${{ secrets.MAVEN_USER }}</username>
+              <password>${{ secrets.MAVEN_PWD }}</password>
+              <id>central</id>
+            </server>
+            <server>
+              <username>${{ secrets.MAVEN_USER }}</username>
+              <password>${{ secrets.MAVEN_PWD }}</password>
+              <id>snapshots</id>
+            </server>
+           </servers>
+          </settings>
+          EOT
       - name: Deploy artifacts
-        run: mvn -f src/pom.xml clean package
+        run: mvn -f src/pom.xml clean deploy
       - name: Release distribution
         id: create_release
         uses: actions/create-release@v1
