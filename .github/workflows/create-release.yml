@@ -1,0 +1,21 @@
+name: Create Release
+on:
+  workflow_dispatch:
+
+jobs:
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Packages
+        run: sudo apt-get install -y curl jq
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Get release tags
+        run: |
+          release_json=$(curl $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases)
+          echo $release_json
+          
