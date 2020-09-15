@@ -26,6 +26,6 @@ jobs:
         run: |
           git add .
           git config user.name AutoBump && git config user.email autobump@autobump
-          git commit -m "Bump version to {{github.event.inputs.version}}
+          git commit -m "Bump version to {{github.event.inputs.version}}"
       - name: Push
         run: git push origin bump-{{github.events.input.version}}
