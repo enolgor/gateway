@@ -22,7 +22,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3.3.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Bump version to {{github.event.inputs.version}}"
+          commit-message: "Bump version to ${{ github.event.inputs.version }}"
           committer: AutoBumper <autobumper@autobumper>
           author: AutoBumper <autobumper@autobumper>
           branch: "bump-${{ github.event.inputs.version }}"
