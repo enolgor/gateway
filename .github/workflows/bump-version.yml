@@ -21,7 +21,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.3.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN_PAT }}
           commit-message: "Bump version to ${{ github.event.inputs.version }}"
           committer: AutoBumper <autobumper@autobumper>
           author: AutoBumper <autobumper@autobumper>
