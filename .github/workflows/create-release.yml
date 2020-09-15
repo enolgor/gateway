@@ -26,4 +26,22 @@ jobs:
           release_not_exists=$(echo "$releases" | grep -q "${{ steps.getversion.outputs.version }}"; echo $?;)
           if [ "$release_not_exists" -eq "1" ]; then exit 0; else exit 1; fi
       - name: Deploy artifacts
-        run: mvn clean deploy
+        run: mvn -f src/pom.xml clean package
+      - name: Release distribution
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.getversion.outputs.version }}
+          release_name: ${{ steps.getversion.outputs.version }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: src/distribution/physical-gateway/target/physical-gateway-${{ steps.getversion.outputs.version }}-dist.zip
+          asset_content_type: application/zip
