@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  create-release:
-    name: Create Release
+  check:
+    name: Check Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,4 +18,10 @@ jobs:
         run: |
           echo "url = $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases"
           release_exists=$(curl -s https://api.github.com/repos/enolgor/gateway/releases | jq -r '.[].tag_name' | grep -c "0.6.0")
-          echo $release_exists          
+          exit $release_exists          
+  deploy:
+    needs: check
+    if: needs.check.outputs.status == 'success'
+    steps:
+      - name: Test output
+        run: echo "job run"
