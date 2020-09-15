@@ -20,7 +20,7 @@ jobs:
           releases=$(curl -s https://api.github.com/repos/enolgor/gateway/releases | jq -r '.[].tag_name')
           echo "$releases"
           release_not_exists=$(echo "$releases" | grep -q "0.6.2"; echo $?;)
-          echo $release_exists
+          echo $release_not_exists
   deploy:
     needs: check
     if: needs.check.outputs.status == 'success'
