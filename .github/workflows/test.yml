@@ -1,0 +1,18 @@
+name: Test
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Settingsxml
+        run: |
+          cat <<EOT >> settings.xml
+          <settings>
+          </settings>
+          EOT
+          echo settings.xml
+
