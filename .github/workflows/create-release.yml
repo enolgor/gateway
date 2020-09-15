@@ -14,11 +14,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Get release tags
+      - name: Check current version against released tags
         run: |
+          version=$(mvn -f src/pom.xml help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo "url = $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases"
           releases=$(curl -s https://api.github.com/repos/enolgor/gateway/releases | jq -r '.[].tag_name')
-          release_not_exists=$(echo "$releases" | grep -q "0.6.2"; echo $?;)
+          release_not_exists=$(echo "$releases" | grep -q "$version"; echo $?;)
           if [ "$release_not_exists" -eq "1" ]; then exit 0; else exit 1; fi
   deploy:
     needs: check
