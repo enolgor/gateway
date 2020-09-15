@@ -14,17 +14,16 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Check current version against released tags
+      - name: Get current version
+        id: getversion
         run: |
           version=$(mvn -f src/pom.xml help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo ::set-output version=$version
+      - name: Check current version against released tags
+        run: |
           echo "url = $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases"
           releases=$(curl -s https://api.github.com/repos/enolgor/gateway/releases | jq -r '.[].tag_name')
-          release_not_exists=$(echo "$releases" | grep -q "$version"; echo $?;)
+          release_not_exists=$(echo "$releases" | grep -q "${{ steps.getversion.outputs.version }}"; echo $?;)
           if [ "$release_not_exists" -eq "1" ]; then exit 0; else exit 1; fi
-  deploy:
-    needs: check
-    if: needs.check.outputs.status == 'success'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test output
-        run: echo "job run"
+      - name: Deploy artifacts
+        run: mvn clean deploy
