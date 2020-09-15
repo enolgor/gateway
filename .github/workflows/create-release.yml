@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Packages
-        run: sudo apt-get install -y curl jq
+        run: sudo apt-get install -y curl jq grep
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -19,6 +19,8 @@ jobs:
           echo "url = $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases"
           releases=$(curl -s https://api.github.com/repos/enolgor/gateway/releases | jq -r '.[].tag_name')
           echo "$releases"
+          release_exists=$(echo "$releases" | grep -c "0.6.2")
+          echo $release_exists
   deploy:
     needs: check
     if: needs.check.outputs.status == 'success'
