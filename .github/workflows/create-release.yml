@@ -18,7 +18,7 @@ jobs:
         id: getversion
         run: |
           version=$(mvn -f src/pom.xml help:evaluate -Dexpression=project.version -q -DforceStdout)
-          echo ::set-output version=$version
+          echo ::set-output name=version::$version
       - name: Check current version against released tags
         run: |
           echo "url = $GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases"
