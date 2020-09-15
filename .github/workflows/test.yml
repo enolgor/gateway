@@ -14,5 +14,5 @@ jobs:
           <settings>
           </settings>
           EOT
-          echo settings.xml
+          cat settings.xml
 

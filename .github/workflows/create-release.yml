@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
-    name: Check Release
+  release:
+    name: Deploy and Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
