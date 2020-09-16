@@ -27,7 +27,7 @@ jobs:
           if [ "$release_not_exists" -eq "1" ]; then exit 0; else exit 1; fi
       - name: Setup maven settings
         run: |
-          cat <<EOT >> $HOME/.m2/settings.xml
+          cat <<EOT > $HOME/.m2/settings.xml
           <?xml version="1.0" encoding="UTF-8"?>
           <settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <servers>
